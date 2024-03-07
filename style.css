@@ -1,0 +1,153 @@
+body{
+    /* width: 1500px; */
+    margin: auto;
+    background-color: rgb(234, 229, 229);
+}
+
+li{
+    list-style: None;
+}
+
+nav{
+    background-color: aqua;
+}
+
+.menu{
+    font-size: 20px;
+}
+
+.menu:hover{
+    color: rgb(242, 242, 241);
+    cursor: pointer;
+}
+
+.banner-container{
+    width: 1200px;
+    margin: auto;
+}
+
+.banner{
+    display: flex;
+    height: 490px;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(aqua,rgb(35, 165, 165));
+    box-shadow: 4px 4px 8px gray;
+    border-radius: 10px;
+}
+.bn-img{
+    width: 350px;
+    margin-top: -60px;
+}
+
+.services-container{
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.title{
+    font-size: 44px;
+    color: aqua;
+    text-align: center;
+}
+
+.doc-card{
+    width: 300px;
+    height: 420px;
+    box-shadow: 4px 4px 8px gray;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.doc-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+#search{
+    border: none;
+    padding: 10px;
+    width: 75%;
+}
+#nodata{
+    display: none;
+}
+#spinner{
+    display: none;
+}
+
+.review-card{
+    width: 250px;
+    height: 300px;
+    box-shadow: 4px 4px 8px gray;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.review-card img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+footer{
+
+    padding: 50px;
+    background: linear-gradient(66.15deg, #1CA8C7 -5.25%, #439FA5 46.76%, #4C7D8C 98.77%);
+}
+
+.doctor-img img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+}
+.doc-details-container{
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding: 30px;
+    gap: 50px;
+}
+.doc-spe-btn{
+    border: none;
+    padding: 5px 10px;
+    background-color: gray;
+    color: rgb(252, 251, 250);
+    border-radius: 5px;
+}
+
+.user-detail-container{
+    height: 100vh;
+}
+.user-img img{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+.user-details{
+    display: flex;
+    
+}
+
+.all-appointment-container{
+    height: 100vh;
+}
+.doctor{
+    width: 350px;
+    height:400px;
+    box-shadow: 4px 4px 8px gray;
+    text-align: center;
+    background-color:gray;
+    color: white;
+    border-radius:10px;
+}
+.symtom{
+    width: 50%;
+    padding: 20px;
+    margin: 20px;
+    border: none;
+}
