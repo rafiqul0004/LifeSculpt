@@ -113,6 +113,8 @@ const loadPatientId = () => {
       });
   };
   
-loadPatientId();
+  if (localStorage.getItem("user_id")) {
+    loadPatientId();
+}
 getparams();
 loadTime();

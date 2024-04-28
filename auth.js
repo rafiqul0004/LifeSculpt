@@ -58,6 +58,7 @@ const handleLogin = (event) => {
           if (data.token && data.user_id) {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_id", data.user_id);
+            localStorage.setItem("user_name", username);
             window.location.href = "index.html";
           }
         });
@@ -67,3 +68,15 @@ const getValue = (id) => {
     const value = document.getElementById(id).value;
     return value;
 }
+// Display the username in the welcome message using innerText
+const displayUsername = () => {
+  const username = localStorage.getItem("user_name");
+  // console.log(username);
+  if (username) {
+      const welcomeMessage = document.getElementById("welcome-message");
+      welcomeMessage.innerText = `Welcome, ${username}!`;
+  }
+};
+
+// Call the displayUsername function when the welcome page is loaded
+document.addEventListener("DOMContentLoaded", displayUsername);
