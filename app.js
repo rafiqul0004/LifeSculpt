@@ -27,50 +27,87 @@ const displayServices = (services) => {
 }
 
 const loadDoctors = (search) => {
-    document.getElementById('spinner').style.display ="block"
-    const parent = document.getElementById('doctors').innerHTML=""
+    document.getElementById('spinner').style.display = "block"
+    const parent = document.getElementById('doctors').innerHTML = ""
     console.log(search);
     fetch(`https://smart-care-rp5y.onrender.com/doctor/list/?search=${search ? search : ""}`)
 
-    .then(res => res.json())
+        .then(res => res.json())
         .then((data) => {
             console.log(data);
             if (data.results.length > 0) {
-                document.getElementById('spinner').style.display ="none"
+                document.getElementById('spinner').style.display = "none"
                 document.getElementById('nodata').style.display = "none";
                 displayDoctors(data?.results);
             }
             else {
                 const parent = document.getElementById('doctors').innerHTML = ""
-                document.getElementById('spinner').style.display ="none"
-                document.getElementById('nodata').style.display ="block"
+                document.getElementById('spinner').style.display = "none"
+                document.getElementById('nodata').style.display = "block"
             }
         })
-}
+};
 
-const displayDoctors = (doctors) => { 
-    doctors?.forEach((doctor) =>
-    {
-        const parent = document.getElementById('doctors')
-        const div = document.createElement('div')
-        div.classList.add('doc-card')
+const displayDoctors = (doctors) => {
+    const parent = document.getElementById('doctors');
+    parent.classList.add('row', 'row-cols-1', 'row-cols-md-2', 'g-4'); // Added Bootstrap grid classes for column layout and gap
+
+    doctors?.forEach((doctor) => {
+        const div = document.createElement('div');
+        div.classList.add('col-md-6', 'col-lg-4'); // Adjusted Bootstrap grid classes for smaller card width
         div.innerHTML = `
-                        <img class="doc-img" src=${doctor?.image} alt="">
-                        <h1>${doctor?.user}</h1>
-                        <h4>${doctor?.designation[0]}</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, amet?</p>
-                        <p>
+            <div class="card border-light shadow-sm h-100">
+                <div class="text-center">
+                    <img class="card-img-top doc-img" src="${doctor?.image}" alt="">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">${doctor?.user}</h2>
+                    <h5 class="card-subtitle mb-2 text-muted">${doctor?.designation[0]}</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, enim?</p>
+                    <div class="btn-group">
                         ${doctor?.specialization?.map((item) => {
-                            return `<button>${item}</button>`
-                        })}
-                        </p>
-                        <button><a target="_blank" href="docDetails.html?doctorId=${doctor.id}">Details</a></button>
-        `
-        parent.appendChild(div)
-    }
-    )
+                            return `<button class="btn btn-outline-secondary btn-sm">${item}</button>`;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-light">
+                    <a href="docDetails.html?doctorId=${doctor.id}" class="btn btn-primary btn-sm">Details</a>
+                </div>
+            </div>
+        `;
+        parent.appendChild(div);
+    });
+};
 
-}
+
+
+// Simple Design
+// const displayDoctors = (doctors) => {
+//     doctors?.forEach((doctor) =>
+//     {
+//         const parent = document.getElementById('doctors')
+//         const div = document.createElement('div')
+//         div.classList.add('col-lg-6','doc-card')
+//         div.innerHTML = `
+//                         <img class="doc-img" src=${doctor?.image} alt="">
+//                         <h1>${doctor?.user}</h1>
+//                         <h4>${doctor?.designation[0]}</h4>
+//                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, amet?</p>
+//                         <p>
+//                         ${doctor?.specialization?.map((item) => {
+//                             return `<button>${item}</button>`
+//                         })}
+//                         </p>
+//                         <button><a target="_blank" href="docDetails.html?doctorId=${doctor.id}">Details</a></button>
+//         `
+//         parent.appendChild(div)
+//     }
+//     )
+// }
+
+
+
+
 const loadDegignation = () => {
     fetch("https://smart-care-rp5y.onrender.com/doctor/designation/")
     .then(res => res.json())

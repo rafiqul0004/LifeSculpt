@@ -7,39 +7,56 @@ const handleRegistration = (event) => {
     const password = getValue("password");
     const confirm_password = getValue("confirm_password");
 
-   const info={
-    username,
-    first_name,
-    last_name,
-    email,
-    password,
-    confirm_password,
-    }
-    
-    if (password === confirm_password) {
+    const info = {
+        username,
+        first_name,
+        last_name,
+        email,
+        password,
+        confirm_password,
+    };
 
+    if (password === confirm_password) {
         document.getElementById('error').innerHTML = "";
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-            // console.log(info);
             fetch("https://smart-care-rp5y.onrender.com/patient/register", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(info)
             })
-                .then((res) => res.json())
-            .then((data) =>console.log(data));
+            .then((res) => {
+                if (res.ok) {
+                    // Registration successful
+                    console.log("Registration successful");
+                    document.getElementById('error').innerHTML = "Registration successful";
+                   
+                } else {
+                    // Registration failed, handle the error response
+                    return res.json(); // Parse the response body as JSON
+                }
+            })
+            .then((errorData) => {
+                if (errorData && errorData.error) {
+                    // Display the specific error message from the backend
+                    document.getElementById('error').innerHTML = errorData.error;
+                } else {
+                    
+                    document.getElementById('error').innerHTML = "Registration failed. Please try again later.";
+                }
+            })
+            .catch((error) => {
+                // Handle errors during registration
+                console.error("Error during registration:", error.message);
+                document.getElementById('error').innerHTML = "Registration failed. Please try again later.";
+            });
+        } else {
+            document.getElementById('error').innerHTML ="Password must contain letters, numbers, and symbols.";
         }
-        else {
-            document.getElementById('error').innerHTML ="password must contain letters and numbers and symbol";
-        }
-        
-    }
-    else {
-        document.getElementById('error').innerHTML = "Password and confirm password does not match"
+    } else {
+        document.getElementById('error').innerHTML = "Password and confirm password do not match"
         alert("password and confirm password do not match")
     }
-
-}
+};
 const handleLogin = (event) => {
     event.preventDefault();
     const username = getValue("login-username");

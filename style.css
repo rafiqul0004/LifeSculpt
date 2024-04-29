@@ -1,7 +1,7 @@
 body{
     /* width: 1500px; */
     margin: auto;
-    background-color: rgb(234, 229, 229);
+    background-color: rgb(234, 233, 229);
 }
 
 li{
@@ -9,7 +9,7 @@ li{
 }
 
 nav{
-    background-color: aqua;
+    background-color: rgb(216, 192, 14);
 }
 
 .menu{
@@ -32,7 +32,7 @@ nav{
     text-align: center;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(aqua,rgb(35, 165, 165));
+    background: linear-gradient( #dda242,rgb(230, 247, 247));
     box-shadow: 4px 4px 8px gray;
     border-radius: 10px;
 }
@@ -49,7 +49,7 @@ nav{
 
 .title{
     font-size: 44px;
-    color: aqua;
+    color: #dda242;
     text-align: center;
 }
 
@@ -96,7 +96,7 @@ nav{
 footer{
 
     padding: 50px;
-    background: linear-gradient(66.15deg, #1CA8C7 -5.25%, #439FA5 46.76%, #4C7D8C 98.77%);
+    background: linear-gradient(66.15deg, #eda838 -5.25%, #d19b46 46.76%, #bc9147 98.77%);
 }
 
 .doctor-img img{
@@ -150,4 +150,22 @@ footer{
     padding: 20px;
     margin: 20px;
     border: none;
+}
+
+.navbar-brand .logo-img {
+    width: 50px; /* Adjust as needed */
+    margin-right: 5px;
+}
+
+.navbar-brand .logo-text {
+    font-size: 1.5rem; /* Adjust as needed */
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #333; /* Adjust text color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Adjust hover color */
 }
