@@ -63,7 +63,7 @@ const displayDoctors = (doctors) => {
                 <div class="card-body">
                     <h2 class="card-title">${doctor?.user}</h2>
                     <h5 class="card-subtitle mb-2 text-muted">${doctor?.designation[0]}</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, enim?</p>
+                    <p class="card-text">All doctors treat, but a good doctor lets nature heal</p>
                     <div class="btn-group">
                         ${doctor?.specialization?.map((item) => {
                             return `<button class="btn btn-outline-secondary btn-sm">${item}</button>`;
@@ -154,14 +154,14 @@ const displayReview = (reviews) => {
         div.classList.add('review-card');
         div.innerHTML = `
                     <img src="Images/girl.png" alt="">
-                    <h4>${review.reviewer}</h4>
+                    
                     <p>${review.body.slice(0, 100)}</p>
                     <h6>${review.rating}</h6>
         `
         parent.appendChild(div)
     });
 };
-
+// <h4>${review.reviewer}</h4>
 loadDoctors();
 loadServices();
 loadDegignation(); 
